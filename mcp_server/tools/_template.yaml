@@ -1,0 +1,16 @@
+name: tool_name                 # snake_case, becomes the MCP tool name
+description: One-line description, <200 chars
+
+mcp_input_schema:
+  arg_name: {type: string, required: true}
+
+mcp_output_schema:
+  status: {type: string, enum: [ok, failed]}
+
+# value bindings usable in steps:
+#   input.X   args from the MCP call
+#   creds.X   keyring lookup
+#   $var      saved via save_as
+#   env.X     environment variable
+steps:
+  - {action: set_var, name: example, value: "replace me"}

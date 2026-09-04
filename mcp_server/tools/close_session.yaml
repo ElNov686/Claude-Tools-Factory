@@ -1,0 +1,9 @@
+name: close_session
+kind: internal
+description: Close a live browser session that login(keep_open=true) left open
+mcp_input_schema:
+  target: {type: string, required: true}
+mcp_output_schema:
+  closed: {type: boolean}
+steps:
+  - {action: close_session, target: input.target}

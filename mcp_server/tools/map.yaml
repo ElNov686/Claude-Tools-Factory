@@ -1,0 +1,16 @@
+name: map
+kind: internal
+description: Build a deduped page graph for the SPA — unique route nodes + multi-path edges discovered via anchor scan. Reuses live login. Writes QA/<host>/dom/map/graph.json (overwritten in place).
+mcp_input_schema:
+  target: {type: string, required: true}
+  page: {type: string, required: false}
+mcp_output_schema:
+  map_page_count: {type: integer}
+  map_edge_count: {type: integer}
+  map_multi_path_pages: {type: integer}
+  map_dump_path: {type: string}
+steps:
+  - {action: use_session, target: input.target}
+  - {action: extract_routes}
+  - {action: resolve_params}
+  - {action: build_map}

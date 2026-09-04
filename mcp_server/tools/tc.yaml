@@ -1,0 +1,22 @@
+name: tc
+description: Synthesize test-case proposals (TC_NN_MM) from the live site (map -> view -> touch -> hidden). Returns a structured menu the user picks from. Reuses live login.
+mcp_input_schema:
+  target: {type: string, required: true}
+  page: {type: string, required: false}
+mcp_output_schema:
+  tc_proposal_count: {type: integer}
+  tc_pages: {type: integer}
+  tc_by_category: {type: object}
+  tc_dump_path: {type: string}
+  qa_files_written: {type: integer}
+  qa_files: {type: array}
+steps:
+  - {action: use_session, target: input.target}
+  - {action: extract_routes}
+  - {action: resolve_params}
+  - {action: build_map}
+  - {action: view_pages}
+  - {action: touch_page}
+  - {action: probe_hidden}
+  - {action: propose_tc}
+  - {action: qa_render}

@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "factory": {
+      "command": "e:/tools/claude-tools-factory/mcp_server/.venv/Scripts/python.exe",
+      "args": ["-m", "mcp_server"],
+      "cwd": "e:/tools/claude-tools-factory/mcp_server"
+    }
+  }
+}

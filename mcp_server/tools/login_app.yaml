@@ -1,0 +1,13 @@
+name: login_app
+description: Universal login to a desktop app already running on the OS. Reads <PREFIX>_APP (window title regex) + _USERNAME + _PASSWORD from env, attaches via UIA, fills inputs and clicks Sign In.
+mcp_input_schema:
+  target: {type: string, required: true}
+mcp_output_schema:
+  status: {type: string, enum: [ok, failed]}
+  target: {type: string}
+  app: {type: string}
+  window: {type: string}
+  clicked: {type: string}
+  error: {type: string}
+steps:
+  - {action: run_app_login_pattern, target: input.target}

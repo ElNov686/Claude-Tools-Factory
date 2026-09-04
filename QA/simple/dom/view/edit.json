@@ -1,0 +1,80 @@
+{
+  "template": "edit",
+  "page_url": "https://staging.projectsimple.ai/isteu/create-project",
+  "screenshot_path": "E:\\tools\\claude-tools-factory\\QA\\simple\\dom\\view\\screenshots\\edit.png",
+  "element_count": 4,
+  "elements": [
+    {
+      "id": 0,
+      "kind": "button",
+      "text": "",
+      "locator": "button >> nth=0",
+      "locator_by": "css+nth",
+      "rect": {
+        "x": 1246,
+        "y": 103,
+        "w": 16,
+        "h": 18
+      },
+      "container": {
+        "tag": "div",
+        "name": "div",
+        "role": null
+      }
+    },
+    {
+      "id": 1,
+      "kind": "button",
+      "text": "",
+      "locator": "button >> nth=1",
+      "locator_by": "css+nth",
+      "rect": {
+        "x": 1246,
+        "y": 193,
+        "w": 16,
+        "h": 18
+      },
+      "container": {
+        "tag": "div",
+        "name": "div",
+        "role": null
+      }
+    },
+    {
+      "id": 2,
+      "kind": "button",
+      "text": "Cancel",
+      "locator": "role=button[name=\"Cancel\"]",
+      "locator_by": "role-name",
+      "rect": {
+        "x": 557.953125,
+        "y": 558,
+        "w": 84.5625,
+        "h": 38
+      },
+      "container": {
+        "tag": "div",
+        "name": "div",
+        "role": null
+      }
+    },
+    {
+      "id": 3,
+      "kind": "button",
+      "text": "Ok",
+      "locator": "role=button[name=\"Ok\"]",
+      "locator_by": "role-name",
+      "rect": {
+        "x": 666.515625,
+        "y": 559,
+        "w": 55.53125,
+        "h": 36
+      },
+      "container": {
+        "tag": "div",
+        "name": "div",
+        "role": null
+      }
+    }
+  ]
+}

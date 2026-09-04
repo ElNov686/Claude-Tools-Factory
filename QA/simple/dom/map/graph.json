@@ -1,0 +1,633 @@
+{
+  "landing": "/:accountId/:projectId/:teamId?",
+  "page_count": 64,
+  "edge_count": 2,
+  "multi_path_page_count": 0,
+  "visited_count": 1,
+  "skipped": [],
+  "nodes": [
+    {
+      "id": 10,
+      "template": "/",
+      "name": null,
+      "page_url": "/",
+      "depth": 1,
+      "paths_in": [
+        {
+          "from_template": "(global-nav:header)",
+          "from_id": null,
+          "trigger": {
+            "text": "",
+            "locator": "#pageHeader a[href=\"/\"]",
+            "kind": "global-nav",
+            "href": "/",
+            "landmark": "header"
+          }
+        }
+      ],
+      "paths_out": []
+    },
+    {
+      "id": 33,
+      "template": "/:accountId/myWork",
+      "name": "myWork",
+      "page_url": "/isteu/myWork",
+      "depth": 1,
+      "paths_in": [
+        {
+          "from_template": "(global-nav:header)",
+          "from_id": null,
+          "trigger": {
+            "text": "fill",
+            "locator": "#pageHeader a[href=\"/isteu/myWork\"]",
+            "kind": "global-nav",
+            "href": "/isteu/myWork",
+            "landmark": "header"
+          }
+        }
+      ],
+      "paths_out": []
+    },
+    {
+      "id": 61,
+      "template": "/:accountId/:projectId/:teamId?",
+      "name": null,
+      "page_url": "/isteu/site.webmanifest",
+      "depth": 0,
+      "paths_in": [],
+      "paths_out": [
+        {
+          "to_id": 10,
+          "to_template": "/",
+          "trigger": {
+            "text": "",
+            "locator": "#pageHeader a[href=\"/\"]",
+            "kind": "global-nav",
+            "href": "/",
+            "landmark": "header"
+          }
+        },
+        {
+          "to_id": 33,
+          "to_template": "/:accountId/myWork",
+          "trigger": {
+            "text": "fill",
+            "locator": "#pageHeader a[href=\"/isteu/myWork\"]",
+            "kind": "global-nav",
+            "href": "/isteu/myWork",
+            "landmark": "header"
+          }
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "template": "/company/create/:priceId?",
+      "name": "CompanySetup",
+      "page_url": "/company/create",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 2,
+      "template": "/company/invite",
+      "name": "InviteUser",
+      "page_url": "/company/invite",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 3,
+      "template": "/invite/:invitationId/wrong-invitee-error",
+      "name": "WrongInviteeError",
+      "page_url": null,
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 4,
+      "template": "/subscription/:priceId",
+      "name": "Subscription",
+      "page_url": null,
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 5,
+      "template": "/subscription-success/:sessionId",
+      "name": "SubscriptionSuccess",
+      "page_url": null,
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 6,
+      "template": "/subscription-cancel/:sessionId",
+      "name": "SubscriptionCancel",
+      "page_url": null,
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 7,
+      "template": "/edit-account/:accountId",
+      "name": "edit-account",
+      "page_url": "/edit-account/isteu",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 8,
+      "template": "/edit-template/:template",
+      "name": "edit-template",
+      "page_url": null,
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 9,
+      "template": "/verification-alert/:priceId?",
+      "name": "VerificationAlert",
+      "page_url": "/verification-alert",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 11,
+      "template": "/error",
+      "name": "Error",
+      "page_url": "/error",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 12,
+      "template": "/subscription",
+      "name": "Subscriptions",
+      "page_url": "/subscription",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 13,
+      "template": "/service-unavailable",
+      "name": "ServiceUnavailable",
+      "page_url": "/service-unavailable",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 14,
+      "template": "/email-verification",
+      "name": "VerificationEmail",
+      "page_url": "/email-verification",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 15,
+      "template": "/storybook",
+      "name": "Storybook",
+      "page_url": "/storybook",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 16,
+      "template": "/redeem",
+      "name": "RedeemCode",
+      "page_url": "/redeem",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 17,
+      "template": "/accounts",
+      "name": "accounts",
+      "page_url": "/accounts",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 18,
+      "template": "/email-templates",
+      "name": "emails",
+      "page_url": "/email-templates",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 19,
+      "template": "/:accountId/timesheet/summary/:projectId",
+      "name": "timesheetSummariesWeeks",
+      "page_url": "/isteu/timesheet/summary/site.webmanifest",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 20,
+      "template": "/:accountId/timesheet/mytime",
+      "name": "myTimesheet",
+      "page_url": "/isteu/timesheet/mytime",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 21,
+      "template": "/:accountId/timesheet/approval",
+      "name": "timesheetApproval",
+      "page_url": "/isteu/timesheet/approval",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 22,
+      "template": "/:accountId/timesheet/summaries",
+      "name": "timesheetSummaries",
+      "page_url": "/isteu/timesheet/summaries",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 23,
+      "template": "/:accountId/myWork/:projectId",
+      "name": "myWorkEditItem",
+      "page_url": "/isteu/myWork/site.webmanifest",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 24,
+      "template": "/:accountId/timesheet/:timesheetId",
+      "name": "timesheet",
+      "page_url": null,
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 25,
+      "template": "/:accountId/projects/:projectId",
+      "name": "project",
+      "page_url": "/isteu/projects/site.webmanifest",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 26,
+      "template": "/:accountId/roadmap/:projectId?",
+      "name": "roadmap",
+      "page_url": "/isteu/roadmap/site.webmanifest",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 27,
+      "template": "/:accountId/past-goals/:projectId?",
+      "name": "past-goals",
+      "page_url": "/isteu/past-goals/site.webmanifest",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 28,
+      "template": "/:accountId/user/:userId?",
+      "name": "edit-user",
+      "page_url": "/isteu/user",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 29,
+      "template": "/:accountId/team/:teamId?",
+      "name": "edit-team",
+      "page_url": "/isteu/team",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 30,
+      "template": "/:accountId/disabled",
+      "name": "DisabledAccount",
+      "page_url": "/isteu/disabled",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 31,
+      "template": "/:accountId/subscription-error",
+      "name": "SubscriptionError",
+      "page_url": "/isteu/subscription-error",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 32,
+      "template": "/:accountId/temporarily-disabled",
+      "name": "TemporarilyDisabledAccount",
+      "page_url": "/isteu/temporarily-disabled",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 34,
+      "template": "/:accountId/timesheet",
+      "name": null,
+      "page_url": "/isteu/timesheet",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 35,
+      "template": "/:accountId/projects",
+      "name": "projects",
+      "page_url": "/isteu/projects",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 36,
+      "template": "/:accountId/create-project",
+      "name": "create-project",
+      "page_url": "/isteu/create-project",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 37,
+      "template": "/:accountId/:projectId-:itemId",
+      "name": "Item",
+      "page_url": null,
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 38,
+      "template": "/:accountId/:projectId/edit-sprint/:teamId/:sprintId",
+      "name": "edit-sprint",
+      "page_url": null,
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 39,
+      "template": "/:accountId/:projectId/epic/:epicId",
+      "name": "epic",
+      "page_url": null,
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 40,
+      "template": "/:accountId/:projectId/milestones/:milestoneId?",
+      "name": "Milestones",
+      "page_url": "/isteu/site.webmanifest/milestones",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 41,
+      "template": "/:accountId/:projectId/edit",
+      "name": "edit-project",
+      "page_url": "/isteu/site.webmanifest/edit",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 42,
+      "template": "/:accountId/:projectId/project-wizard",
+      "name": "project-wizard",
+      "page_url": "/isteu/site.webmanifest/project-wizard",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 43,
+      "template": "/:accountId/:projectId/create-team",
+      "name": "create-team",
+      "page_url": "/isteu/site.webmanifest/create-team",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 44,
+      "template": "/:accountId/:projectId/epics",
+      "name": "epics",
+      "page_url": "/isteu/site.webmanifest/epics",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 45,
+      "template": "/:accountId/:projectId/create-sprint",
+      "name": "create-sprint",
+      "page_url": "/isteu/site.webmanifest/create-sprint",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 46,
+      "template": "/:accountId/:projectId/sprints",
+      "name": "sprints",
+      "page_url": "/isteu/site.webmanifest/sprints",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 47,
+      "template": "/:accountId/:projectId/allSprints",
+      "name": "allSprints",
+      "page_url": "/isteu/site.webmanifest/allSprints",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 48,
+      "template": "/:accountId/:projectId/retros",
+      "name": "retros",
+      "page_url": "/isteu/site.webmanifest/retros",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 49,
+      "template": "/:accountId/:projectId/product-backlog",
+      "name": "product-backlog",
+      "page_url": "/isteu/site.webmanifest/product-backlog",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 50,
+      "template": "/:accountId/:projectId/:teamId/sprint/:sprintId/analytics",
+      "name": "sprint-analytics",
+      "page_url": null,
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 51,
+      "template": "/:accountId/:projectId/:teamId/sprint/:sprintId/review",
+      "name": "SprintReview",
+      "page_url": null,
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 52,
+      "template": "/:accountId/:projectId/:teamId/sprint/:sprintId/add-retro-notes",
+      "name": "AddRetroNotes",
+      "page_url": null,
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 53,
+      "template": "/:accountId/:projectId/:teamId/sprint/:sprintId/retrospective-vote",
+      "name": "retrospective-vote",
+      "page_url": null,
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 54,
+      "template": "/:accountId/:projectId/:teamId/sprint/:sprintId/retrospective",
+      "name": "retrospective",
+      "page_url": null,
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 55,
+      "template": "/:accountId/:projectId/:teamId/sprint/:sprintId",
+      "name": "sprint",
+      "page_url": null,
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 56,
+      "template": "/:accountId/:projectId/:teamId/storypoker",
+      "name": "storypoker",
+      "page_url": null,
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 57,
+      "template": "/:accountId/:projectId/:teamId/sprint",
+      "name": null,
+      "page_url": null,
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 58,
+      "template": "/:accountId/:projectId/:teamId",
+      "name": null,
+      "page_url": null,
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 59,
+      "template": "/:accountId/:projectId/:teamId?/items/create",
+      "name": "CreateItem",
+      "page_url": "/isteu/site.webmanifest/items/create",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 60,
+      "template": "/:accountId/:projectId/:teamId?/backlog",
+      "name": "backlog",
+      "page_url": "/isteu/site.webmanifest/backlog",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 62,
+      "template": "/:accountId/:projectId",
+      "name": null,
+      "page_url": "/isteu/site.webmanifest",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 63,
+      "template": "/:accountId",
+      "name": null,
+      "page_url": "/isteu",
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    },
+    {
+      "id": 64,
+      "template": "/:pathMatch(.*)*",
+      "name": null,
+      "page_url": null,
+      "depth": null,
+      "paths_in": [],
+      "paths_out": []
+    }
+  ]
+}

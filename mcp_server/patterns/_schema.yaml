@@ -1,0 +1,21 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+type: object
+required: [version, target_type, steps]
+properties:
+  version: {type: integer}
+  target_type: {type: string, enum: [web, desktop]}
+  host: {type: string}
+  app: {type: string}
+  exe_hint: {type: string}
+  confidence: {type: string, enum: [high, med, low, stale]}
+  created_by: {type: string}
+  last_validated: {type: string}
+  credentials_keyring_name: {type: string}
+  required_fields: {type: array, items: {type: string}}
+  steps:
+    type: array
+    items:
+      type: object
+      required: [action]
+  quirks: {type: array}
+additionalProperties: true

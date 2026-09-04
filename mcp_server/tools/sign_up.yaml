@@ -1,0 +1,12 @@
+name: sign_up
+description: Universal DOM-driven registration on any web service. Walks the signup form pages automatically using SIGNUP_* env values from env/factory.env. Set visible=true to watch the browser.
+mcp_input_schema:
+  target: {type: string, required: true}
+  keep_open: {type: boolean, required: false}
+  visible: {type: boolean, required: false}      # true = open a real (headed) browser window so a human can watch
+mcp_output_schema:
+  status: {type: string, enum: [ok, needs_verification, failed]}
+  target: {type: string}
+  fields_filled: {type: array}
+steps:
+  - {action: run_signup_pattern, target: input.target, keep_open: input.keep_open, visible: input.visible}

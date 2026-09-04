@@ -1,0 +1,45 @@
+{
+  "template": "mytime",
+  "page_url": "https://staging.projectsimple.ai/error?code=404",
+  "screenshot_path": "E:\\tools\\claude-tools-factory\\QA\\simple\\dom\\view\\screenshots\\mytime.png",
+  "element_count": 2,
+  "elements": [
+    {
+      "id": 0,
+      "kind": "link",
+      "text": "support@projectsimple.ai",
+      "locator": "role=a[name=\"support@projectsimple.ai\"]",
+      "locator_by": "role-name",
+      "rect": {
+        "x": 602.5,
+        "y": 410.796875,
+        "w": 148.25,
+        "h": 17
+      },
+      "container": {
+        "tag": "div",
+        "name": "div",
+        "role": null
+      },
+      "href": "mailto:support@projectsimple.ai"
+    },
+    {
+      "id": 1,
+      "kind": "button",
+      "text": "Back",
+      "locator": "role=button[name=\"Back\"]",
+      "locator_by": "role-name",
+      "rect": {
+        "x": 38,
+        "y": 667.203125,
+        "w": 51.046875,
+        "h": 16.796875
+      },
+      "container": {
+        "tag": "div",
+        "name": "div",
+        "role": null
+      }
+    }
+  ]
+}

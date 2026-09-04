@@ -1,0 +1,13 @@
+name: login
+description: Universal login on any host. Reads creds from env, walks the DOM (username → password → Sign In). visible=true to watch the browser; keep_open=true leaves the session alive for follow-up QA tools.
+mcp_input_schema:
+  target: {type: string, required: true}
+  keep_open: {type: boolean, required: false}
+  visible: {type: boolean, required: false}
+mcp_output_schema:
+  status: {type: string, enum: [ok, failed]}
+  target: {type: string}
+  final_url: {type: string}
+  error: {type: string}
+steps:
+  - {action: run_login_pattern, target: input.target, keep_open: input.keep_open, visible: input.visible}

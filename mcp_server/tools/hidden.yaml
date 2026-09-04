@@ -1,0 +1,22 @@
+name: hidden
+kind: internal
+description: For every page in the map, click every safe button and record what opens (modal / navigation / no-op). Writes QA/<host>/dom/functions/<page-slug>.json. Pass `page` to refresh only that page.
+mcp_input_schema:
+  target: {type: string, required: true}
+  page: {type: string, required: false}
+mcp_output_schema:
+  hidden_pages: {type: integer}
+  hidden_modals_total: {type: integer}
+  hidden_probed_total: {type: integer}
+  hidden_pre_mounted_total: {type: integer}
+  hidden_unprobed_total: {type: integer}
+  hidden_dump_paths: {type: array}
+  hidden_summary_path: {type: string}
+steps:
+  - {action: use_session, target: input.target}
+  - {action: extract_routes}
+  - {action: resolve_params}
+  - {action: build_map}
+  - {action: view_pages}
+  - {action: touch_page}
+  - {action: probe_hidden}

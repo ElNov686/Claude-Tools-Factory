@@ -1,0 +1,73 @@
+{
+  "url": "https://accounts.google.com/lifecycle/steps/signup/mophoneverification/initial?TL=APouJz70o2rPumxjsyOW2aEfuHPZUIDFzBFDxdyXSx5JpNbDiicLsrMtzVhhPlWP&continue=https%3A%2F%2Faccounts.google.com%2FManageAccount%3Fnc%3D1&dsh=S1445573802%3A1780325820428242&flowEntry=SignUp&flowName=GlifWebSignIn",
+  "probe": {
+    "inputs": [],
+    "buttons": [],
+    "comboboxes": [
+      {
+        "tag": "div",
+        "role": "combobox",
+        "id": "",
+        "aria_label": "",
+        "label": "English (United States)",
+        "text": "English (United States)"
+      }
+    ],
+    "url": "https://accounts.google.com/lifecycle/steps/signup/mophoneverification/initial?TL=APouJz70o2rPumxjsyOW2aEfuHPZUIDFzBFDxdyXSx5JpNbDiicLsrMtzVhhPlWP&continue=https%3A%2F%2Faccounts.google.com%2FManageAccount%3Fnc%3D1&dsh=S1445573802%3A1780325820428242&flowEntry=SignUp&flowName=GlifWebSignIn"
+  },
+  "extra": {
+    "clickables": [
+      {
+        "tag": "div",
+        "role": "combobox",
+        "text": "English (United States)",
+        "aria_label": "",
+        "class": "VfPpkd-TkwUic"
+      },
+      {
+        "tag": "a",
+        "role": "",
+        "text": "Help",
+        "aria_label": "",
+        "class": "AVAq4d TrZEUc"
+      },
+      {
+        "tag": "a",
+        "role": "",
+        "text": "Privacy",
+        "aria_label": "",
+        "class": "AVAq4d TrZEUc"
+      },
+      {
+        "tag": "a",
+        "role": "",
+        "text": "Terms",
+        "aria_label": "",
+        "class": "AVAq4d TrZEUc"
+      }
+    ],
+    "all_inputs": [
+      {
+        "tag": "textarea",
+        "type": "",
+        "name": "g-recaptcha-response",
+        "id": "g-recaptcha-response-100000",
+        "display": "none",
+        "visibility": "hidden",
+        "disabled": false,
+        "aria_disabled": "",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      }
+    ]
+  },
+  "html_len": 1214734
+}

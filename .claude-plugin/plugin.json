@@ -1,0 +1,19 @@
+{
+  "name": "claude-tools-factory",
+  "version": "0.1.0",
+  "description": "Declarative MCP tool factory for QA automation. Login + a map->view->touch->hidden->tc->qa pipeline that scrapes a live SPA and emits Playwright POM + spec files in BoardQA style.",
+  "keywords": ["mcp", "playwright", "qa-automation", "test-case", "pom", "spa-mapping"],
+  "license": "MIT",
+  "homepage": "https://github.com/seth/claude-tools-factory",
+  "agents": ["agents/*.md"],
+  "skills": ["skills/*/SKILL.md"],
+  "commands": ["commands/*.md"],
+  "mcpServers": {
+    "factory": {
+      "command": "python",
+      "args": ["-m", "mcp_server"],
+      "cwd": "${CLAUDE_PLUGIN_ROOT}/mcp_server",
+      "timeout": 180000
+    }
+  }
+}

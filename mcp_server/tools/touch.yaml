@@ -1,0 +1,20 @@
+name: touch
+kind: internal
+description: Group view's per-page interactives by container; resolve static link transitions to target templates. Writes QA/<host>/dom/containers/<page-slug>.json. Pass `page` to refresh only that page.
+mcp_input_schema:
+  target: {type: string, required: true}
+  page: {type: string, required: false}
+mcp_output_schema:
+  touch_pages: {type: integer}
+  touch_elements_total: {type: integer}
+  touch_transitions_total: {type: integer}
+  touch_skipped: {type: integer}
+  touch_dump_paths: {type: array}
+  touch_summary_path: {type: string}
+steps:
+  - {action: use_session, target: input.target}
+  - {action: extract_routes}
+  - {action: resolve_params}
+  - {action: build_map}
+  - {action: view_pages}
+  - {action: touch_page}

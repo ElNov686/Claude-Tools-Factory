@@ -1,0 +1,129 @@
+{
+  "page_count": 45,
+  "elements_total": 90,
+  "skipped": [
+    {
+      "template": "/invite/:invitationId/wrong-invitee-error",
+      "reason": "no concrete URL"
+    },
+    {
+      "template": "/subscription/:priceId",
+      "reason": "no concrete URL"
+    },
+    {
+      "template": "/subscription-success/:sessionId",
+      "reason": "no concrete URL"
+    },
+    {
+      "template": "/subscription-cancel/:sessionId",
+      "reason": "no concrete URL"
+    },
+    {
+      "template": "/edit-template/:template",
+      "reason": "no concrete URL"
+    },
+    {
+      "template": "/:accountId/timesheet/:timesheetId",
+      "reason": "no concrete URL"
+    },
+    {
+      "template": "/:accountId/:projectId-:itemId",
+      "reason": "no concrete URL"
+    },
+    {
+      "template": "/:accountId/:projectId/edit-sprint/:teamId/:sprintId",
+      "reason": "no concrete URL"
+    },
+    {
+      "template": "/:accountId/:projectId/epic/:epicId",
+      "reason": "no concrete URL"
+    },
+    {
+      "template": "/:accountId/:projectId/:teamId/sprint/:sprintId/analytics",
+      "reason": "no concrete URL"
+    },
+    {
+      "template": "/:accountId/:projectId/:teamId/sprint/:sprintId/review",
+      "reason": "no concrete URL"
+    },
+    {
+      "template": "/:accountId/:projectId/:teamId/sprint/:sprintId/add-retro-notes",
+      "reason": "no concrete URL"
+    },
+    {
+      "template": "/:accountId/:projectId/:teamId/sprint/:sprintId/retrospective-vote",
+      "reason": "no concrete URL"
+    },
+    {
+      "template": "/:accountId/:projectId/:teamId/sprint/:sprintId/retrospective",
+      "reason": "no concrete URL"
+    },
+    {
+      "template": "/:accountId/:projectId/:teamId/sprint/:sprintId",
+      "reason": "no concrete URL"
+    },
+    {
+      "template": "/:accountId/:projectId/:teamId/storypoker",
+      "reason": "no concrete URL"
+    },
+    {
+      "template": "/:accountId/:projectId/:teamId/sprint",
+      "reason": "no concrete URL"
+    },
+    {
+      "template": "/:accountId/:projectId/:teamId",
+      "reason": "no concrete URL"
+    },
+    {
+      "template": "/:pathMatch(.*)*",
+      "reason": "no concrete URL"
+    }
+  ],
+  "pages": [
+    "/",
+    "/:accountId/myWork",
+    "/:accountId/:projectId/:teamId?",
+    "/company/create/:priceId?",
+    "/company/invite",
+    "/edit-account/:accountId",
+    "/verification-alert/:priceId?",
+    "/error",
+    "/subscription",
+    "/service-unavailable",
+    "/email-verification",
+    "/storybook",
+    "/redeem",
+    "/accounts",
+    "/email-templates",
+    "/:accountId/timesheet/summary/:projectId",
+    "/:accountId/timesheet/mytime",
+    "/:accountId/timesheet/approval",
+    "/:accountId/timesheet/summaries",
+    "/:accountId/myWork/:projectId",
+    "/:accountId/projects/:projectId",
+    "/:accountId/roadmap/:projectId?",
+    "/:accountId/past-goals/:projectId?",
+    "/:accountId/user/:userId?",
+    "/:accountId/team/:teamId?",
+    "/:accountId/disabled",
+    "/:accountId/subscription-error",
+    "/:accountId/temporarily-disabled",
+    "/:accountId/timesheet",
+    "/:accountId/projects",
+    "/:accountId/create-project",
+    "/:accountId/:projectId/milestones/:milestoneId?",
+    "/:accountId/:projectId/edit",
+    "/:accountId/:projectId/project-wizard",
+    "/:accountId/:projectId/create-team",
+    "/:accountId/:projectId/epics",
+    "/:accountId/:projectId/create-sprint",
+    "/:accountId/:projectId/sprints",
+    "/:accountId/:projectId/allSprints",
+    "/:accountId/:projectId/retros",
+    "/:accountId/:projectId/product-backlog",
+    "/:accountId/:projectId/:teamId?/items/create",
+    "/:accountId/:projectId/:teamId?/backlog",
+    "/:accountId/:projectId",
+    "/:accountId"
+  ]
+}

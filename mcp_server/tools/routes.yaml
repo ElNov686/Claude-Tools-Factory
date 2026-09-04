@@ -1,0 +1,19 @@
+name: routes
+kind: internal
+description: Extract a SPA's route table from its internals (Vue Router / JS bundle) AND resolve params from the live app into concrete navigable URLs. Reuses the live login session.
+mcp_input_schema:
+  target: {type: string, required: true}
+mcp_output_schema:
+  route_count: {type: integer}
+  static_count: {type: integer}
+  source: {type: string}
+  routes_preview: {type: array}
+  total_routes: {type: integer}
+  navigable_count: {type: integer}
+  params_resolved: {type: array}
+  navigable_preview: {type: array}
+  dump_path: {type: string}
+steps:
+  - {action: use_session, target: input.target}
+  - {action: extract_routes}
+  - {action: resolve_params}

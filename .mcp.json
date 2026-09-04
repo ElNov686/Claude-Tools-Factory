@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "factory": {
+      "command": "python",
+      "args": ["-m", "mcp_server"],
+      "cwd": "./mcp_server"
+    }
+  }
+}

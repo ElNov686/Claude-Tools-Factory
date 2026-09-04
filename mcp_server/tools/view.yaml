@@ -1,0 +1,18 @@
+name: view
+kind: internal
+description: Per-page screenshot + visible-interactives inventory with rect and unique locators. Writes QA/<host>/dom/view/<page-slug>.json. Pass `page` to refresh only that page.
+mcp_input_schema:
+  target: {type: string, required: true}
+  page: {type: string, required: false}
+mcp_output_schema:
+  view_pages: {type: integer}
+  view_elements_total: {type: integer}
+  view_skipped: {type: integer}
+  view_dump_paths: {type: array}
+  view_summary_path: {type: string}
+steps:
+  - {action: use_session, target: input.target}
+  - {action: extract_routes}
+  - {action: resolve_params}
+  - {action: build_map}
+  - {action: view_pages}

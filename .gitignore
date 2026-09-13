@@ -9,5 +9,6 @@ venv/
 /tmp/
 *.log
 .env
+*.env
 .DS_Store
 env/

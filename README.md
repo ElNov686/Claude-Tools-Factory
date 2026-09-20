@@ -48,18 +48,23 @@ Then merge `claude_desktop_config.snippet.json` into Claude Desktop's
 `claude_desktop_config.json` (Settings → Developer → Edit Config), adjusting
 the absolute paths, and restart Claude Desktop.
 
-### Credentials (keyring)
+### Credentials (`env/factory.env`)
 
-Login patterns read credentials from your OS keyring, never from disk.
-Example — staging.projectsimple.ai:
+`login` reads credentials from `env/factory.env`, not from the OS keyring.
+Add one block per project, three variables sharing a prefix:
 
 ```
-keyring set staging.projectsimple.ai email
-keyring set staging.projectsimple.ai password
+BOARD_URL=https://staging.projectsimple.ai
+BOARD_USERNAME=board.simple.qa+08@gmail.com
+BOARD_PASSWORD=QA_board00
 ```
 
-The key name matches the `credentials_keyring_name` in the relevant
-`mcp_server/patterns/web/<host>.yaml` (defaults to the target's hostname).
+Call `login` with `target` set to that prefix (case-insensitive substring
+match, e.g. `target: "board"`), not the URL itself — `login` picks the
+`<PREFIX>_*` block whose prefix appears in `target`, then walks the DOM
+(username → password → submit) on `<PREFIX>_URL`.
+
+`env/factory.env` is gitignored; never commit it.
 
 ---
 
@@ -67,16 +72,23 @@ The key name matches the `credentials_keyring_name` in the relevant
 
 User-facing tools — the ones Claude calls directly:
 
-| Tool    | What it does                                                       |
-|---------|--------------------------------------------------------------------|
-| `login` | Log into a web service (URL) or desktop app (key) via a learned pattern. `keep_open: true` keeps the browser alive for follow-up tools. |
-| `tc`    | Synthesize TC_NN_MM test-case proposals from a live SPA. Reuses the live login session, runs the full `map → view → touch → hidden → propose_tc` chain, returns a structured menu. |
+| Tool         | What it does                                                       |
+|--------------|--------------------------------------------------------------------|
+| `login`      | Universal login on any web host. Reads `<PREFIX>_URL/_USERNAME/_PASSWORD` from `env/factory.env` and walks the DOM (username → password → submit) — no per-site pattern needed. `keep_open: true` keeps the browser alive for follow-up tools. |
+| `login_app`  | Same idea for a desktop app already running on the OS: reads `<PREFIX>_APP` (window title regex) + `_USERNAME`/`_PASSWORD`, attaches via UIA. |
+| `sign_up`    | Walks a registration form using `SIGNUP_*` values from `env/factory.env`. Uses a per-host pattern at `mcp_server/patterns/web/<host>.signup.yaml` when one exists. |
+| `tc`         | Synthesize TC_NN_MM test-case proposals from a live SPA. Reuses the live login session, runs the full `map → view → touch → hidden → propose_tc → qa_render` chain itself, returns a structured menu and writes POM/spec files. |
 
-Internal tools (hidden from the MCP catalog — composed by `tc` and the
-runner, or invoked directly only during development):
-`map`, `view`, `touch`, `hidden`, `routes`, `screenshot`, `read_ui_tree`,
-`json_query`, `bug_report`, `notify`, `creds`, `sign_up`, `spin_up`,
-`site_map`, `close_session`, `login_resume`.
+Internal tools (`kind: internal` in their YAML — not shown in the MCP
+catalog; composed by `tc` and the runner, or fetched directly by name for
+debugging): `map`, `view`, `touch`, `hidden`, `routes`, `close_session`.
+Each of `map`/`view`/`touch`/`hidden`/`tc` takes an optional `page` (a route
+template or a concrete path) to scope the work to one page instead of the
+whole SPA — always use it when you only care about one feature, since
+without it these tools crawl every route. See
+[`docs/SESSION_GUIDE.md`](docs/SESSION_GUIDE.md) for the practical call
+patterns, including why these internal tools must never be called
+concurrently against the same `target` (they share one live browser page).
 
 ---
 
@@ -92,8 +104,15 @@ python -m mcp_server.runner \
 ```
 
 Prints `TC count`, `Output dir`, and the top-5 generated files at the end.
-Headless by default; `--headed` shows the browser (the login pattern wins
-if it pins `headless`).
+Headless by default; `--headed` shows the browser.
+
+---
+
+## Session guide
+
+Practical notes on starting a session against a specific project and the
+token-saving call patterns for generating test cases — see
+[`docs/SESSION_GUIDE.md`](docs/SESSION_GUIDE.md) (RU).
 
 ---
 
@@ -112,4 +131,4 @@ if it pins `headless`).
 
 - Never commit credentials. Patterns and tool YAML are safe to commit — they
   contain no secrets.
-- All credentials come from the OS keyring at runtime.
+- All credentials come from `env/factory.env` at runtime (gitignored).

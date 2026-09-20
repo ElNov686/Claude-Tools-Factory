@@ -12,3 +12,8 @@ venv/
 *.env
 .DS_Store
 env/
+
+# Per-project QA output (scraped DOM/screenshots/route data for real client
+# projects) — never belongs in this shared framework repo.
+QA/
+

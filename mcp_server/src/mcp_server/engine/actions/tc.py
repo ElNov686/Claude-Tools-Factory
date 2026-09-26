@@ -3,6 +3,7 @@ hidden) and emit a TC_NN_MM proposal list — the chat-facing menu the user
 picks from. Universal templates per category (form / transition / modal /
 pre-mounted / disabled / search-filter / no-op / click-failed)."""
 
+import json
 from typing import Any
 
 from .. import qa_paths

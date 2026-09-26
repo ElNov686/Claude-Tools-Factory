@@ -129,6 +129,32 @@ def resolve_page_filter(page_arg: str | None, routes: list[dict]) -> set[str] | 
     return candidates
 
 
+def direct_concrete_page(page_arg: str | None) -> str | None:
+    """When `page` is a concrete URL/path (not a bare route template), return
+    its normalized path — the literal page the caller asked to visit.
+
+    For a parameterized template like `/dashboard/:tab`, the route resolver
+    only ever discovers ONE representative value per param name (e.g. it
+    might land on `/dashboard/chat` no matter which tab you actually wanted).
+    When the caller passed a concrete path such as `/dashboard/listings`,
+    that IS the exact page they want — callers should navigate to it
+    directly instead of falling back to the resolver's single guess.
+
+    Returns None when `page_arg` is empty, or is itself a route template
+    (contains a `:param` segment) rather than a concrete path.
+    """
+    if not page_arg:
+        return None
+    direct = page_arg
+    if direct.startswith("http://") or direct.startswith("https://"):
+        direct = urlparse(direct).path or "/"
+    if not direct.startswith("/"):
+        direct = "/" + direct
+    if ":" in direct:
+        return None
+    return direct.split("?")[0].split("#")[0]
+
+
 def template_slug(template: str) -> str:
     """Stable file-safe slug per route template.
 

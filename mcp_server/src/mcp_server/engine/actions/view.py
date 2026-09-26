@@ -225,6 +225,7 @@ async def view_pages(step: dict[str, Any], ctx: dict[str, Any]) -> None:
 
     page_filter_arg = (ctx.get("input") or {}).get("page")
     filter_tpls = qa_paths.resolve_page_filter(page_filter_arg, routes)
+    direct_concrete = qa_paths.direct_concrete_page(page_filter_arg)
 
     per_page: list[dict] = []
     skipped: list[dict] = []
@@ -236,7 +237,11 @@ async def view_pages(step: dict[str, Any], ctx: dict[str, Any]) -> None:
         tpl = node["template"]
         if filter_tpls is not None and tpl not in filter_tpls:
             continue
-        concrete = nav_by_template.get(tpl)
+        # A concrete `page` (e.g. /dashboard/listings) IS the exact page the
+        # caller wants — use it directly rather than the route resolver's
+        # single representative value for the whole :tab-style template
+        # (which could be a different, unrelated instance like /dashboard/chat).
+        concrete = direct_concrete or nav_by_template.get(tpl)
         if not concrete:
             skipped.append({"template": tpl, "reason": "no concrete URL"})
             continue

@@ -50,6 +50,7 @@ async def touch_page(step: dict[str, Any], ctx: dict[str, Any]) -> None:
 
     page_filter_arg = (ctx.get("input") or {}).get("page")
     filter_tpls = qa_paths.resolve_page_filter(page_filter_arg, routes)
+    direct_concrete = qa_paths.direct_concrete_page(page_filter_arg)
 
     per_page: list[dict] = []
     skipped: list[dict] = []
@@ -101,7 +102,7 @@ async def touch_page(step: dict[str, Any], ctx: dict[str, Any]) -> None:
 
         record = {
             "template": tpl,
-            "page_url": nav_by_template.get(tpl),
+            "page_url": direct_concrete or nav_by_template.get(tpl),
             "container_count": len(containers),
             "element_count": len(elements),
             "transition_count": len(transitions),

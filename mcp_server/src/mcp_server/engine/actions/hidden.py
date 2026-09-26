@@ -325,13 +325,21 @@ def _dump_summary(payload: dict, host: str) -> str:
 async def _probe_buttons(page: Any, buttons: list[dict],
                           before_sigs: set[str],
                           seen_signatures: set[str],
-                          depth: int, max_depth: int) -> list[dict]:
+                          depth: int, max_depth: int,
+                          base_url: str | None = None) -> list[dict]:
     """Click each safe button; record outcome of each (opened-modal /
     navigated / no-op / click-failed / hard-block). For opened-modal,
     read overlay structure AND recurse into its buttons. Returns one
     record per probed button — never silently drops.
+
+    `base_url` is the page every candidate is probed against. Without
+    resetting to it after a "navigated" outcome, every later candidate in
+    `buttons` would be tried against whatever page that navigation landed
+    on instead — where its locator usually doesn't exist, so it reports a
+    misleading "click-failed" instead of ever really being tried.
     """
     found: list[dict] = []
+    current_before_sigs = set(before_sigs)
     for cand in buttons:
         if cand.get("kind") != "button":
             continue
@@ -363,12 +371,25 @@ async def _probe_buttons(page: Any, buttons: list[dict],
             rec["outcome"] = "navigated"
             rec["new_url"] = page.url
             found.append(rec)
+            if base_url:
+                try:
+                    await _navigate(page, base_url)
+                    await page.wait_for_load_state("networkidle", timeout=1200)
+                    # A fresh navigation can re-show things that were already
+                    # dismissed once (e.g. a cookie-consent banner) — rebase
+                    # the "before" signature set or the next candidate's click
+                    # gets misattributed as having opened that leftover overlay.
+                    current_before_sigs = {
+                        _signature(o) for o in await page.evaluate(_OVERLAY_SCAN_JS)
+                    }
+                except Exception:
+                    pass
             continue
         try:
             after = await page.evaluate(_OVERLAY_SCAN_JS)
         except Exception:
             after = []
-        new_o = [o for o in after if _signature(o) not in before_sigs]
+        new_o = [o for o in after if _signature(o) not in current_before_sigs]
         if not new_o:
             rec["outcome"] = "no-op"
             found.append(rec)
@@ -388,6 +409,15 @@ async def _probe_buttons(page: Any, buttons: list[dict],
             continue
         seen_signatures.add(sig)
         rec["outcome"] = "opened-modal"
+        # The overlay itself is already visible (that's how we detected it),
+        # but its content can still be one tick behind — e.g. a modal that
+        # fetches its own data (a packages/options list) after mounting.
+        # networkidle above doesn't reliably cover this (some apps keep a
+        # persistent websocket/analytics connection open, so it never fires).
+        try:
+            await page.wait_for_timeout(500)
+        except Exception:
+            pass
         try:
             rec["surface"] = await page.evaluate(_OVERLAY_STRUCT_JS)
         except Exception:
@@ -396,10 +426,10 @@ async def _probe_buttons(page: Any, buttons: list[dict],
             inner_buttons = [el for el in rec["surface"]["elements"]
                              if el.get("kind") == "button"]
             if inner_buttons:
-                nested_before = set(before_sigs) | {sig}
+                nested_before = set(current_before_sigs) | {sig}
                 rec["nested"] = await _probe_buttons(
                     page, inner_buttons, nested_before, seen_signatures,
-                    depth + 1, max_depth,
+                    depth + 1, max_depth, base_url,
                 )
         try:
             await page.keyboard.press("Escape")
@@ -427,6 +457,7 @@ async def probe_hidden(step: dict[str, Any], ctx: dict[str, Any]) -> None:
 
     page_filter_arg = (ctx.get("input") or {}).get("page")
     filter_tpls = qa_paths.resolve_page_filter(page_filter_arg, routes)
+    direct_concrete = qa_paths.direct_concrete_page(page_filter_arg)
 
     per_page: list[dict] = []
     written_paths: list[str] = []
@@ -438,7 +469,9 @@ async def probe_hidden(step: dict[str, Any], ctx: dict[str, Any]) -> None:
         tpl = node["template"]
         if filter_tpls is not None and tpl not in filter_tpls:
             continue
-        concrete = nav_by_template.get(tpl)
+        # See view.py: a concrete `page` overrides the resolver's single
+        # representative value for a :param-style template.
+        concrete = direct_concrete or nav_by_template.get(tpl)
         if not concrete:
             pages_skipped.append({"template": tpl, "reason": "no concrete URL"})
             continue
@@ -489,7 +522,7 @@ async def probe_hidden(step: dict[str, Any], ctx: dict[str, Any]) -> None:
             seen_signatures: set[str] = set()
             page_surfaces = await _probe_buttons(
                 page, candidates, before_sigs, seen_signatures, depth=1,
-                max_depth=max_depth,
+                max_depth=max_depth, base_url=concrete,
             )
 
         def _count_opened(recs: list[dict]) -> int:
